@@ -6,7 +6,7 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-image: url("logo.png");
+      background-image: url("bg.jpg");
       background-repeat: no-repeat;
       background-size: cover;
     }
@@ -53,12 +53,12 @@
     }
 
     .sign-in-button {
-      background-color: #4CAF50;
+      background-color: #000000;
       color: #fff;
       border: none;
       padding: 10px 20px;
       border-radius: 5px;
-      cursor: pointer;
+
     }
 
     .sign-up-text {
@@ -72,18 +72,18 @@
 <body>
   <div class="container">
     <div class="login-box">
-      <div class="logo">
-        <img src="logo.png" alt="Logo">
-      </div>
-      <input type="email" class="email" placeholder="Email">
-      <br>
-      <input type="password" class="password" placeholder="Password">
-      <br>
-      <div class="sign-up-text">Don't Have an account? <a href="">Sign up</a></div>
-      <div class="forgot-password">
-        <a href="#">Forgot Password?</a>
-      </div>
-      <button class="sign-in-button">Sign In</button>
+
+      <img src="mainlogo.png" style="height: 30%;" alt="">
+      <form action="#" method="post">
+        <input type="email" class="email" placeholder="Email" required>
+        <input type="password" class="password" placeholder="Password" required>
+       <input type="submit" name="submit" class="sign-in-button" id="">
+      </form>
+
+      <p>Forgot Password? <a href="reset.html" style="color: rgb(105, 102, 102);">Reset</a> Now</p>
+      <p>Don't Have an Account? <a href="signup.html" style="color: #666262;"> Sign Up</a> Now</p>
+    
+
     </div>
   </div>
 </body>
