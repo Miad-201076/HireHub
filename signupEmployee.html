@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("bg.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-box {
+      background-color: #fff;
+      border-radius: 10px;
+      width: 500px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    .cv{
+      width: 20%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+
+    .logo {
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      height: 80px;
+    }
+
+    .email,
+    .password {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .forgot-password {
+      text-align: right;
+      margin-bottom: 10px;
+    }
+
+    .sign-in-button {
+      background-color: #000000;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+
+    }
+
+    .sign-up-text {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="login-box">
+
+
+      <img src="mainlogo.png" style="height: 30%; width: 30%" alt="">
+      <h3>Employee</h3>
+      <form action="#" method="post">
+        <label for="">Profile Picture</label>
+        <input type="file" name="profilepic" id="" class="cv" placeholder="Profile Picture" value="Profile picture" required>
+        <input type="text" name="name" class="email" placeholder="Name" required>
+        <input type="email" name="email" class="email" placeholder="Email" required>
+        <input type="date" name="dob" class="email" placeholder="Date of Birth" required>
+        <select name="education" id="" class="email" aria-placeholder="Educational Background">
+            <option value="BSCSE">BSCSE</option>
+            <option value="BSEEE">BSEEE</option>
+            <option value="BSMECHANICAL">BSMECHANICAL</option>
+            <option value="BSCivil">BSCivil</option>
+            <option value="BBA General">BBA General</option>
+            <option value="Accounting">Accounting</option>
+            <option value="Finance">Finance</option>
+            <option value="HR">HR</option>
+            <option value="Management">Management</option>
+        </select>
+      
+        <select name="institute" id="" class="email" aria-placeholder="Educational institute" required>
+            <option value="UIU">UIU</option>
+            <option value="NSU">NSU</option>
+            <option value="BRAC">BRAC</option>
+            <option value="BUET">BUET</option>
+            <option value="DU">DU</option>          
+        </select>
+        <input type="text" class="email" name="CGPA" placeholder="UNI-CGPA" required>
+       
+        <input type="password" name="pass" class="password" placeholder="Password" required>
+        <label for="">Upload your CV</label>
+        <input type="file" name="cv" id="" class="cv" placeholder="Upload Your CV" value="CV">
+        <br>
+        <textarea name="description" id="" class="email" cols="20" rows="6" placeholder="your short description..." required></textarea>
+       <input type="submit" name="submit" class="sign-in-button" id="">
+       
+      </form>
+
+      <p>Forgot Password? <a href="reset.html" style="color: rgb(105, 102, 102);">Reset</a> Now</p>
+      <p>Already have  an Account? <a href="login.html" style="color: #666262;"> Sign in</a> Now</p>
+    
+
+    </div>
+  </div>
+</body>
+</html>
