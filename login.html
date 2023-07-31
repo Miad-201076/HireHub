@@ -6,7 +6,7 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-image: url("bg.jpg");
+      background-image: url("images/bg.jpg");
       background-repeat: no-repeat;
       background-size: cover;
     }
@@ -21,7 +21,6 @@
     .login-box {
       background-color: #fff;
       border-radius: 10px;
-      height: 300px;
       width: 500px;
       padding: 20px;
       text-align: center;
@@ -73,10 +72,14 @@
   <div class="container">
     <div class="login-box">
 
-      <img src="mainlogo.png" style="height: 30%;" alt="">
+      <img src="images/mainlogo.png" style="width:30%" alt="">
       <form action="#" method="post">
         <input type="email" class="email" placeholder="Email" required>
         <input type="password" class="password" placeholder="Password" required>
+        <select name="category" id="" class="email">
+            <option value="employee">Employee</option>
+            <option value="employer">Employer</option>
+        </select>
        <input type="submit" name="submit" class="sign-in-button" id="" value="Sign In">
       </form>
 
