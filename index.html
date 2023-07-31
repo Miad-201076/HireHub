@@ -7,20 +7,23 @@
 </head>
 <body>
     <div class="navbar">
-      <img src="mainlogo.png" style="width: 10%;" alt="">
+      <img src="images/mainlogo.png" style="width: 10%;" alt="">
         <div class="navright">
              
-            <span  onclick="window.location.href='SignupSelect.html'">Sign Up</span>
-            <span onclick="window.location.href='login.html'">Log In</span>
-            <span onclick="window.location.href='#ourServices'">Our Services</span>
-         
+            <a href="SignupSelect.html">Sign Up</a>
+            <a href="login.html">Log In</a>
+            <a href="#">Our Services</a>
+       
+
 
         </div>
     </div>
     <hr>
 
     <div class="slider">
-        <img src="hire.jpg" alt="" id="sliderImg" class="image1">
+        <img src="" alt="" id="sliderImg1" class="image1">
+        
+       
     </div>
 
     <hr>
@@ -31,7 +34,7 @@
         <hr>
 
         <div class="hirer">
-            <img src="hirer.jpg" style="width: 45%;  border-radius:10px ;" alt="">
+            <img src="images/hirer.jpg" style="width: 45%;  border-radius:10px ;" alt="">
             
          
             <br>
@@ -47,7 +50,7 @@
         <br>
         <br>
         <div class="employee">
-            <img src="employee.webp" style="width: 45%;  border-radius:10px ;" alt="">
+            <img src="images/employee.webp" style="width: 45%;  border-radius:10px ;" alt="">
             
          
             <br>
@@ -61,14 +64,14 @@
     </div>
 
     <div class="footer">
-        <img src="mainlogo.png" style="width: 10%;" alt="">
+        <img src="images/mainlogo.png" style="width: 10%;" alt="">
         <p>We are here to conncet you for better outcome</p>
         <div class="icon">
-            <img src="fb.png" style="width: 50px; height:50px" alt="">
+            <img src="images/fb.png" style="width: 50px; height:50px" alt="">
             &nbsp;  &nbsp;  &nbsp;
-            <img src="tw.png" style="width: 50px; height:50px" alt="">
+            <img src="images/tw.png" style="width: 50px; height:50px" alt="">
             &nbsp;  &nbsp;  &nbsp;
-            <img src="gmail.png" style="width: 50px; height:50px" alt="">
+            <img src="images/gmail.png" style="width: 50px; height:50px" alt="">
 
         </div>
 
@@ -85,10 +88,11 @@
 </body>
 </html>
 
+
 <style>
     body{
         width: 80%;
-        background-color: black;
+        background-color: rgb(0, 0, 0);
         margin-left: 10%;
         color: aliceblue;
        
@@ -131,15 +135,34 @@
         position: relative;
         display: inline-block;
         background-size: 100%;
-        background-color: aliceblue;
         background-color: black;
     }
     .slider .image1{
        width: 100%;
        height: 750px;
-    
+       background-image: url(images/hire.jpg);
+       background-size: 100%;
+       animation: changeImage 20s linear infinite;
 
     }
+    @keyframes changeImage{
+        0% {
+           background-image: url(images/hire.jpg); 
+        }
+        25% {
+            background-image: url(images/jobsearch.jpg); 
+         }
+        50% {
+            background-image: url(images/find.jpg); 
+         }
+         75% {
+            background-image: url(images/job.png); 
+         }
+         100% {
+            background-image: url(images/jobs.png); 
+         }
+}
+   
    
     .navbar {     
         width: 100%;
@@ -147,6 +170,7 @@
         height: 5%;
         top: 0;
         color: aliceblue;
+
 
     }
     .navright{
@@ -156,11 +180,32 @@
         color: aliceblue;
 
     }
-    .navright span{
+    .navright a{
+        font-family: 'Poppings',sans-serif;
+        position: relative;
+        text-decoration: none;
         color: aliceblue;
-        padding-left: 2%;
+        padding-left: 4%;
         margin-top: -5%;
         border-color: aliceblue;
-       font-size: 18px;
+        letter-spacing: 1px;
+        font-size: 18px;
+       cursor: pointer;
+       margin-right: 1%;
+    }
+    .navright a:after{
+       content: "";
+       position: absolute;
+       height: 5px;
+       left: 30px;
+       width: 0;
+       bottom: 45px;
+       transition: 0.3s;
+       background-color: rgb(255, 255, 255);
+      
+    }
+    .navright a:hover:after{
+        width: 100%;
     }
 </style>
+
