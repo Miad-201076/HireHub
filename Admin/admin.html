@@ -13,8 +13,29 @@
             <a href="approval.html">Approval</a>
             <a href="tutorial.html">Tutorial Upload</a>
             <a href="settings.html">Settings</a>
-          <img src="../images/avatar.png" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%" alt="">  
-        </div>
+          <img src="../images/avatar.png" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%" > 
+          
+          <div class="sub-menu-wrap" id="subMenu">
+
+            <div class="sub-menu">
+                 <div class="user-info">
+                    <img src="../images/avatar.png"  alt="">
+                    <h2>Admin</h2>
+                 </div>
+                 <hr>
+                
+               <a href="#" class="sub-menu-link">
+                <img src="../images/logout.png" alt="">
+                <p>Log Out</p>
+                <span> > </span>
+             </a>
+            </div>
+
+          </div>
+          
+
+
+ </div>
         <div class="container">
             <div class="card-container">
                 <div class="card">
@@ -48,9 +69,17 @@
               </div>
         </div>
         <br>
-        <div class="graph" style="text-align: center;">
-            <div id="piechart_3d" style="width: 800px; height: 600px; text-align:center; margin-left:30%;"></div>
+        <div class="graphsec">
+          <div class="graph" style="text-align: center;">
+            <div id="columnchart_values" style="width: 900px; height: 300px; margin-left:15%"></div>
         </div>
+        <div class="graph" style="text-align: center; margin-left:2%">
+          <div id="piechart_3d" style="width: 1100; height: 500; text-align:center;margin-left:15%"></div>
+      </div>
+
+ </div> 
+     
+       
 </body>
 </html>
 
@@ -62,13 +91,15 @@
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
       ['Task', 'Hours per Day'],
-      ['Work Circular',     11],
-      ['Hirer',      2],
-      ['Employee',  2],
+      ['Work Circular',     0],
+      ['Hirer',      25],
+      ['Employee',  40],
 
     ]);
 
     var options = {
+      width: 550,
+      height: 400,
       title: 'Graphical Represntation',
       backgroundColor: 'transparent',
       legendTextStyle: { color: '#FFF' },
@@ -81,15 +112,75 @@
     chart.draw(data, options);
   }
 </script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load("current", {packages:['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ["Element", "Density", { role: "style" } ],
+      ["Employee", 40, "orange"],
+      ["Employer", 25, "White"],
+      ["Jobs", 33, "Red"],
+    ]);
+
+    var view = new google.visualization.DataView(data);
+    view.setColumns([0, 1,
+                     { calc: "stringify",
+                       sourceColumn: 1,
+                       type: "string",
+                       role: "annotation" },
+                     2]);
+
+    var options = {
+      title: "Graphical Representation",
+      Element:{color: `#FFF`},
+      width: 550,
+      height: 400,
+      bar: {groupWidth: "65%"},
+      legend: { position: "none" },
+      legendTextStyle: { color: '#FFF' },
+      titleTextStyle: { color: '#FFF' },
+      backgroundColor: 'transparent',
+      color: `white`
+    };
+    var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+    chart.draw(view, options);
+}
+
+
+
+</script>
+<script>
+      let subMenu= document.getElementById("subMenu");
+      function toggleMenu(){
+        subMenu.classList.toggle("open");
+      }
+
+     
+</script>
+
 
 
 <style>
+
+
+
   
-   
+   .graphsec{
+    display: flex;
+    width: 97%;
+    height: 450px;
+    margin-left: 0.5%;
+    background-color: #ffffff;
+    border-radius: 5px;
+
+    color: white;
+   }
     .graph{
-        width: 97%;
+   
+        width: 49%;
         height: 450px;
-        margin-left: 0.5%;
         background-color: #1597e7;
         border-radius: 5px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -159,9 +250,97 @@
     }
     .navbar a:hover:after{
         width: 100%;
-    
-   
+    }
 
+
+
+
+
+    .sub-menu-wrap{
+      position: absolute;
+      top: 8%;
+      right: 11%;
+      width: 320px;
+      max-height: 0px;
+      overflow: hidden;
+      transition: max-height 0.5s;
+      border-radius: 40px;
+    }
+    .sub-menu-wrap.open{
+      max-height: 400px;
+    }
+    .sub-menu{
+      background-color: #000000;
+      padding: 20px;
+      margin: 10px;
+      color: azure;
+    }
+    .user-info{
+      display: flex;
+      align-items: center;
+    }
+    .user-info h3{
+        font-weight: 500;
+    }
+    .user-info img{
+      width: 50px;
+      border-radius: 50%;
+     margin-right: 15px;
+    }
+    .sub-menu hr{
+      border: 0;
+      height: 1px;
+      width: 100%;
+      background: #ccc;
+      margin: 15px 0 10px ;
+    }
+    .sub-menu-link{
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #ffffff;
+      margin: 12px 0;
+    }
+  
+  
+    .sub-menu-link p{
+      width: 100%;
+  
+    }
+    .sub-menu-link img{
+      width: 30px;
+      background: #ffffff;
+      border-radius: 50%;
+      padding: 8px;
+      margin-right: 15px;
+  
+    }  
+    .sub-menu-link span{
+      font-size: 22px;
+      transition: transform 0.5s;
+  
+    }
+    
+    .sub-menu-link:hover span{
+      transform: translate(5px);
+  
+    }
+    .sub-menu-link:hover p{
+  
+      font-weight: 600;
+  
+    }
+    .sub-menu a{
+      font-family: 'Poppings',sans-serif;
+      cursor: pointer;
+      color:white ;
+    }
+
+  .sub-menu a:hover{
+      color:rgb(255, 255, 255); 
+    }
+  .sub-menu a:hover:after{
+      width: 0%;
     }
 
 </style>
