@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+</head>
+<body>
+    <body>
+        <div class="navbar">
+          <img src="../images/mainlogo.png" style="width: 7%;" alt="">
+            <a href="admin.html">Dashboard</a>
+            <a href="approval.html">Approval</a>
+            <a href="tutorial.html">Tutorial Upload</a>
+            <a href="settings.html">Settings</a>
+          <img src="../images/avatar.png" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%" alt="">  
+        </div>
+        <div class="container">
+            <div class="card-container">
+                <div class="card">
+                <img src="../images/employee.png" alt="">
+                  <h2>Total Employee</h2>
+                  <p>Total added job seekers are rising day by day and current number is-</p>
+                  <div class="circle">
+                    <h1>433</h1>
+                  </div> 
+                 
+                </div>
+                <div class="card">
+                  <img src="../images/company.png" alt="">
+                  <h2>Total Company </h2>
+                  <p>Total added job seekers are rising day by day and current number is-</p>
+                  <div class="circle">
+                    <h1>433</h1>
+                  </div> 
+                
+                </div>
+                <div class="card">
+                    <img src="../images/job (2).png" alt="">
+                  <h2>Total Job Circular</h2>
+                  <p>Total added job seekers are rising day by day and current number is-</p>
+                  <div class="circle">
+                    <h1>433</h1>
+                  </div> 
+             
+                </div>
+               
+              </div>
+        </div>
+        <br>
+        <div class="graph" style="text-align: center;">
+            <div id="piechart_3d" style="width: 800px; height: 600px; text-align:center; margin-left:30%;"></div>
+        </div>
+</body>
+</html>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load("current", {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Work Circular',     11],
+      ['Hirer',      2],
+      ['Employee',  2],
+
+    ]);
+
+    var options = {
+      title: 'Graphical Represntation',
+      backgroundColor: 'transparent',
+      legendTextStyle: { color: '#FFF' },
+      titleTextStyle: { color: '#FFF' },
+      color: '#FFF',
+      is3D: true,
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+    chart.draw(data, options);
+  }
+</script>
+
+
+<style>
+  
+   
+    .graph{
+        width: 97%;
+        height: 450px;
+        margin-left: 0.5%;
+        background-color: #1597e7;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        color: white;
+    }
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+  
+      .card {
+        width: calc(30% - 20px);
+        text-align: justify;
+        margin: 10px;
+        padding: 20px;
+        color: aliceblue;
+        background-color: #1597e7;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+      }
+      .circle{
+        text-align: center;
+        width: 80px;
+        border: 3px rgb(248, 248, 248) solid;
+        border-radius: 50px;
+        margin-left: 40%;
+      }
+    body{
+        width: 80%;
+        margin-left: 10%;
+        color: black;   
+        background-color: white;    
+    }
+
+   
+    .navbar {     
+        width: 100%;
+        height: 5%;
+        top: 0;
+        display: flex;
+    }
+    .navbar a{
+        font-family: 'Poppings',sans-serif;
+        position: relative;
+        text-decoration: none;
+        letter-spacing: 0.5px;
+        padding-left: 2%;
+        margin-top: 2.5%;
+        margin-left: 2%;
+        cursor: pointer;
+        color:black ;
+    }
+   .navbar a:after{
+        content: "";
+        position: absolute;
+        background-color: rgb(20, 115, 238);
+        height: 5px;
+        left: 12px;
+        width: 0;
+        bottom: 25px;
+        transition: 0.3s;
+    }
+    .navbar a:hover{
+        color:rgb(20, 115, 238); 
+    }
+    .navbar a:hover:after{
+        width: 100%;
+    
+   
+
+    }
+
+</style>
