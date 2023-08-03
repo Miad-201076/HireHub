@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="employer.css">
+    <title>Employer Home Page</title>
+</head>
+<body>
+    <div class="navbar">
+        <img src="../images/mainlogo.png" style="width: 7%;" alt="">
+          <a href="homepage.html">Home</a>
+          <a href="news.html">News</a>
+          <a href="jobs.html">Jobs</a>
+          <a href="jobseekers.html">Job Sekkers</a>
+          <a href="company.html">Company's</a>
+
+          <img src="../images/company1.png" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%" > 
+        
+          <div class="sub-menu-wrap" id="subMenu">
+
+            <div class="sub-menu">
+                 <div class="user-info">
+                    <img src="../images/company1.png"  alt="">
+                    <h2>Admin</h2>
+                 </div>
+                 <hr>
+                 <a href="#" class="sub-menu-link">
+                  <img src="../images/logout.png" alt="">
+                  <p style="color: white;">Company Profile</p>
+                  <span> > </span>
+               </a>
+               <a href="#" class="sub-menu-link">
+                <img src="../images/logout.png" alt="">
+                <p style="color: white;">Posted Jobs</p>
+                <span> > </span>
+              </a>
+                
+               <a href="#" class="sub-menu-link">
+                <img src="../images/logout.png" alt="">
+                <p style="color: white;">Log Out</p>
+                <span> > </span>
+             </a>
+            </div>
+
+          </div>
+
+      </div>
+
+
+
+
+      <div class="footer">
+        <img src="../images/mainlogo.png" style="width: 110px;" alt="">
+        <p>We are here to conncet you for better outcome</p>
+        <div class="icon">
+            <img src="../images/fb.png" style="width: 50px; height:50px" alt="">
+            &nbsp;  &nbsp;  &nbsp;
+            <img src="../images/tw.png" style="width: 50px; height:50px" alt="">
+            &nbsp;  &nbsp;  &nbsp;
+            <img src="../images/gmail.png" style="width: 50px; height:50px" alt="">
+  
+        </div>
+       </div>   
+    
+</body>
+</html>
+<script>
+    let subMenu= document.getElementById("subMenu");
+    function toggleMenu(){
+      subMenu.classList.toggle("open");
+    } 
+  </script>
