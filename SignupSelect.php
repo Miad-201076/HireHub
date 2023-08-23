@@ -1,3 +1,8 @@
+<?php
+include('config.php');
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,8 +84,8 @@
       <h1>How do you want to register yourself?</h1>
     </div>
     <div class="buttons">
-     <button class="button"><a href="signupEmployee.html">Employee</a></button>
-     <button class="button"><a href="signupHirer.html">Employer</a></button>
+     <button class="button"><a href="signupEmployee.php">Employee</a></button>
+     <button class="button"><a href="signupHirer.php">Employer</a></button>
      
     </div>
    

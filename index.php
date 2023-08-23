@@ -1,3 +1,8 @@
+<?php
+include('config.php');
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +15,8 @@
       <img src="images/mainlogo.png" style="width: 10%;" alt="">
         <div class="navright">
              
-            <a href="SignupSelect.html">Sign Up</a>
-            <a href="login.html">Log In</a>
+            <a href="SignupSelect.php">Sign Up</a>
+            <a href="login.php">Log In</a>
             <a href="#">Our Services</a>
        
 
