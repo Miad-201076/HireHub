@@ -1,7 +1,8 @@
 <?php
 
-include('config.php');
+require_once ('config.php');
 session_start();
+
 
 
 $sql1 = "SELECT * FROM user where type='employee' and approval=1";

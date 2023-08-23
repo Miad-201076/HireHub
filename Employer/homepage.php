@@ -1,6 +1,8 @@
 <?php
 
 include('config.php');
+session_start();
+$name=$_SESSION['name'];
 
 ?>
 
@@ -28,7 +30,7 @@ include('config.php');
             <div class="sub-menu">
                  <div class="user-info">
                     <img src="../images/company1.png"  alt="">
-                    <h2>Admin</h2>
+                    <h2><?php echo $name ?></h2>
                  </div>
                  <hr>
                  <a href="profile.php" class="sub-menu-link">
@@ -36,7 +38,12 @@ include('config.php');
                   <p style="color: white;">Company Profile</p>
                   <span> > </span>
                </a>
-               <a href="#" class="sub-menu-link">
+               <a href="jobpost.php" class="sub-menu-link">
+                <img src="../images/logout.png" alt="">
+                <p style="color: white;">Post Jobs</p>
+                <span> > </span>
+              </a>
+               <a href="postedjob.php" class="sub-menu-link">
                 <img src="../images/logout.png" alt="">
                 <p style="color: white;">Posted Jobs</p>
                 <span> > </span>

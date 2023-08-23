@@ -23,7 +23,7 @@
               <div class="sub-menu">
                    <div class="user-info">
                       <img src="../images/company1.png"  alt="">
-                      <h2>Admin</h2>
+                      <h2><?php echo $_SESSION['name'] ?></h2>
                    </div>
                    <hr>
                    <a href="profile.php" class="sub-menu-link">
@@ -31,7 +31,7 @@
                     <p>Company Profile</p>
                     <span> > </span>
                  </a>
-                 <a href="#" class="sub-menu-link">
+                 <a href="postedjob.php" class="sub-menu-link">
                   <img src="../images/logout.png" alt="">
                   <p>Posted Jobs</p>
                   <span> > </span>

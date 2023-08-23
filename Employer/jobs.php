@@ -33,7 +33,7 @@ $result= mysqli_query($conn,$sql);
             <div class="sub-menu">
                  <div class="user-info">
                     <img src="../images/company1.png"  alt="">
-                    <h2>Admin</h2>
+                    <h2><?php echo $_SESSION['name'] ?></h2>
                  </div>
                  <hr>
                  <a href="profile.php" class="sub-menu-link">
@@ -41,7 +41,12 @@ $result= mysqli_query($conn,$sql);
                   <p style="color: white;">Company Profile</p>
                   <span> > </span>
                </a>
-               <a href="#" class="sub-menu-link">
+               <a href="jobpost.php" class="sub-menu-link">
+                <img src="../images/logout.png" alt="">
+                <p style="color: white;">Post Jobs</p>
+                <span> > </span>
+              </a>
+               <a href="postedjob.php" class="sub-menu-link">
                 <img src="../images/logout.png" alt="">
                 <p style="color: white;">Posted Jobs</p>
                 <span> > </span>
@@ -88,7 +93,7 @@ $result= mysqli_query($conn,$sql);
 
         while($row=mysqli_fetch_assoc($result))
         {
-          $id = $row['id'];
+
           $j_title = $row['j_title'];
           $j_type = $row['j_type'];
           $j_description = $row['j_description'];

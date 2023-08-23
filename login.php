@@ -1,5 +1,6 @@
 <?php
 include('config.php');
+session_start();
 ?>
 
 
@@ -95,16 +96,18 @@ include('config.php');
 
 <?php
 
+
 if(isset($_POST['submit']))
 {
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  $query = "SELECT * FROM user WHERE email='$email' and password='$password'";
+  $query = "SELECT * FROM user WHERE email='$email' and password='$password' and approval=1";
   $result = mysqli_query($conn,$query);
 
-  if(mysqli_num_rows($result)==1)
+  if(mysqli_num_rows($result)>0)
   {
+
     $row= mysqli_fetch_assoc($result);
     $_SESSION['email']=$email;
     $_SESSION['type']=$row['type'];

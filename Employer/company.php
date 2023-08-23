@@ -10,14 +10,12 @@ $result = mysqli_query($conn, $sql);
 ?>
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="employer.css">
+
  
     <title>Jobs Page</title>
 </head>
@@ -37,7 +35,7 @@ $result = mysqli_query($conn, $sql);
             <div class="sub-menu">
                  <div class="user-info">
                     <img src="../images/company1.png"  alt="">
-                    <h2>Admin</h2>
+                    <h2><?php echo $_SESSION['name'] ?></h2>
                  </div>
                  <hr>
                  <a href="profile.php" class="sub-menu-link">
@@ -45,7 +43,12 @@ $result = mysqli_query($conn, $sql);
                   <p style="color: white;">Company Profile</p>
                   <span> > </span>
                </a>
-               <a href="#" class="sub-menu-link">
+               <a href="jobpost.php" class="sub-menu-link">
+                <img src="../images/logout.png" alt="">
+                <p style="color: white;">Post Jobs</p>
+                <span> > </span>
+              </a>
+               <a href="postedjob.php" class="sub-menu-link">
                 <img src="../images/logout.png" alt="">
                 <p style="color: white;">Posted Jobs</p>
                 <span> > </span>
@@ -60,7 +63,7 @@ $result = mysqli_query($conn, $sql);
 
           </div>
 
-      </div>
+    </div>
 
       <div class="search-area">
         <form action="" method="get">
@@ -83,11 +86,12 @@ $result = mysqli_query($conn, $sql);
       </div>
 
 
-      <div class="card-container ">
+      <div class="card-container">
 
         <?php
         while($row = mysqli_fetch_assoc($result)){
 
+          $id= $row['id'];
           $cover_pic= $row['cover_pic'];
           $name= $row['name'];
           $type= $row['company_type'];
@@ -96,25 +100,20 @@ $result = mysqli_query($conn, $sql);
         ?>
           <div class="card1">
 
-            <a href="#">
-              <img src="../images/banner/<?php echo $cover_pic ?>" alt="">
+            <a href="company_deails.php?c_id=<?php echo $id?>">
+              <img src="../<?php echo $cover_pic ?>" alt="">
               <div class="profileimg">
-                <img src="../images/profile/<?php echo $profile_pic  ?>" alt="">
+                <img src="../<?php echo $profile_pic  ?>" alt="">
               </div>
               <h3><?php echo $name ?></h3>
               <h5><?php echo $type ?></h5>
               <p><?php  echo $description ?></p>
             </a>
-
-
-        <?php
-
-        }
-        ?>
-          
-
-
       </div>
+      <?php
+
+}
+?>
 
       
 
@@ -329,24 +328,6 @@ $result = mysqli_query($conn, $sql);
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-start;
-
-
-    }
-
-    .card {
-      width: 31%; 
-      height:  400px;
-      text-align: justify;
-      margin: 10px;
-      background-color: #090a0a;
-      /* border-radius: 15px; */
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-      transition: 0.3s;
-      color: #ffffff;
-      text-decoration: none;
-      padding: 5px;
-     
-
     }
     .card1 {
       width: 31%; 
@@ -424,73 +405,6 @@ $result = mysqli_query($conn, $sql);
     }
     .card1:hover p{
       color: #000000;
-    }
-    .card:hover{
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-      transform: translateY(-5px);
-      background-color: #ffffff;
-      color: #000000;
-      transition: 0.3s;
-
-    }
-    .card a{
-      text-decoration: none;
-
-    }
-    .card:hover a{
-      text-decoration: none;
-      color: #000000;
-
-    }
-    .card:hover p{
-      color: #000000;
-
-    }
-    .card:hover h3{
-      color: #000000;
-
-    }
-    .card:hover h5{
-      color: #000000;
-
-    }
-    .card h3{
-      margin-top: -9%;
-      text-decoration: none;
-      color: #ffffff;
-      margin-left: 30%;
-      font-weight: 710;
-
-    }
-    .card h5{
-      margin-top: -4%;
-      text-decoration: none;
-      color: #ffffff;
-      margin-left: 30.5%;
-      font-weight: 710;
-
-    }
-    .card p{
-      text-align: justify;
-      margin-top: -2%;
-      text-decoration: none;
-      color: #ffffff;
-      padding: 10px;
-      font-size: 14px;
-      font-weight: 500;
-
-    }
-    .card img{
-      width: 100%;
-      height: 50%;
-      border-radius: 15px 15px 0 0;
-    }
-    .card .profileimg img{
-      width: 20%;
-      height: 100%;
-      border-radius: 50%;
-      margin-top: -10%;
-      margin-left: 5%;
     }
     .tag{
       width: 50%;
