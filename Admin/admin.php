@@ -1,3 +1,26 @@
+<?php
+
+include('config.php');
+session_start();
+
+
+$sql1 = "SELECT * FROM user where type='employee' and approval=1";
+$result = mysqli_query($conn, $sql1);
+$num1 = mysqli_num_rows($result);
+
+$sql2 = "SELECT * FROM user where type='company' and approval=1";
+$result = mysqli_query($conn, $sql2);
+$num2 = mysqli_num_rows($result);
+
+$sql3= "SELECT * FROM job";
+$result = mysqli_query($conn, $sql3);
+$num3 = mysqli_num_rows($result);
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +33,10 @@
     <body>
         <div class="navbar">
           <img src="../images/mainlogo.png" style="width: 7%;" alt="">
-            <a href="admin.html">Dashboard</a>
-            <a href="approval.html">Approval</a>
-            <a href="tutorial.html">Tutorial Upload</a>
-            <a href="settings.html">Settings</a>
+            <a href="admin.php">Dashboard</a>
+            <a href="approval.php">Approval</a>
+            <a href="tutorial.php">Tutorial Upload</a>
+            <a href="settings.php">Settings</a>
           <img src="../images/avatar.png" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%" > 
           
           <div class="sub-menu-wrap" id="subMenu">
@@ -25,7 +48,7 @@
                  </div>
                  <hr>
                 
-               <a href="#" class="sub-menu-link">
+               <a href="logout.php" class="sub-menu-link">
                 <img src="../images/logout.png" alt="">
                 <p>Log Out</p>
                 <span> > </span>
@@ -41,10 +64,10 @@
             <div class="card-container">
                 <div class="card">
                 <img src="../images/employee.png" alt="">
-                  <h2>Total Employee</h2>
+                  <h2>Total Seeker</h2>
                   <p>Total added job seekers are rising day by day and current number is-</p>
                   <div class="circle">
-                    <h1>433</h1>
+                    <h1><?php echo $num1?></h1>
                   </div> 
                  
                 </div>
@@ -53,16 +76,16 @@
                   <h2>Total Company </h2>
                   <p>Total added job seekers are rising day by day and current number is-</p>
                   <div class="circle">
-                    <h1>433</h1>
+                  <h1><?php echo $num2?></h1>
                   </div> 
                 
                 </div>
                 <div class="card">
-                    <img src="../images/job (2).png" alt="">
+                    <img src="../images/jobs(2).png" alt="">
                   <h2>Total Job Circular</h2>
                   <p>Total added job seekers are rising day by day and current number is-</p>
                   <div class="circle">
-                    <h1>433</h1>
+                  <h1><?php echo $num3?></h1>
                   </div> 
              
                 </div>
@@ -93,8 +116,8 @@
     var data = google.visualization.arrayToDataTable([
       ['Task', 'Hours per Day'],
       ['Work Circular',     0],
-      ['Hirer',      25],
-      ['Employee',  40],
+      ['Hirer',      <?php echo $num2 ?>],
+      ['Seeker',  <?php echo $num1 ?>],
 
     ]);
 
@@ -120,9 +143,9 @@
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
       ["Element", "Density", { role: "style" } ],
-      ["Employee", 40, "orange"],
-      ["Employer", 25, "White"],
-      ["Jobs", 33, "Red"],
+      ["Seeker", <?php echo $num1 ?>, "orange"],
+      ["Employer", <?php echo $num2 ?>, "White"],
+      ["Jobs", <?php echo $num3 ?>, "Red"],
     ]);
 
     var view = new google.visualization.DataView(data);
