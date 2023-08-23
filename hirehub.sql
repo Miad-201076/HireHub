@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 23, 2023 at 04:16 PM
+-- Generation Time: Aug 23, 2023 at 10:18 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -67,6 +67,7 @@ CREATE TABLE `skills` (
 
 CREATE TABLE `tutorial` (
   `t_id` int(11) NOT NULL,
+  `t_title` varchar(50) NOT NULL,
   `t_file` varchar(40) NOT NULL,
   `t_description` varchar(40) NOT NULL,
   `t_type` varchar(40) NOT NULL
@@ -85,21 +86,26 @@ CREATE TABLE `user` (
   `password` varchar(20) NOT NULL,
   `type` varchar(20) NOT NULL,
   `university` varchar(30) NOT NULL,
+  `education_background` varchar(50) NOT NULL,
   `cgpa` float NOT NULL,
   `description` varchar(50) NOT NULL,
   `cv` varchar(200) NOT NULL,
   `profile_pic` varchar(200) NOT NULL,
   `cover_pic` varchar(200) NOT NULL,
   `address` varchar(20) NOT NULL,
-  `company_type` varchar(30) NOT NULL
+  `company_type` varchar(30) NOT NULL,
+  `approval` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `password`, `type`, `university`, `cgpa`, `description`, `cv`, `profile_pic`, `cover_pic`, `address`, `company_type`) VALUES
-(1, 'Admin', 'admin@gmail.com', '1234', 'admin', '', 0, '', '', '', '', '', '');
+INSERT INTO `user` (`id`, `name`, `email`, `password`, `type`, `university`, `education_background`, `cgpa`, `description`, `cv`, `profile_pic`, `cover_pic`, `address`, `company_type`, `approval`) VALUES
+(1, 'Admin', 'admin@gmail.com', '1234', 'admin', '', '', 0, '', '', '', '', '', '', 1),
+(2, 'Tiger it', 'tiger@gmail.com', '1234', 'company', '', '', 0, 'It company in Gulshan', '', 'tig.png', 'Untitled-1.png', 'Gulshan,Dhaka', 'IT', 1),
+(4, 'Abu Bakar', 'abu@gmail.com', '1234', 'seeker', 'United International Universit', '', 3.92, 'Hardworking and confident person who loves to do p', 'abu.pdf', 'abu.jpg', 'abu.jpg', 'Notun Bazar dhaka', '', 1),
+(8, 'Mithila', 'm@gmail.com', '1234', 'seeker', 'United International Universit', '', 3.94, 'Hardworking and confident person who loves to do p', 'm.pdf', 'mithila.jpg', 'abu.png', 'Bashabo, Dhaka', '', 1);
 
 --
 -- Indexes for dumped tables
@@ -161,13 +167,13 @@ ALTER TABLE `skills`
 -- AUTO_INCREMENT for table `tutorial`
 --
 ALTER TABLE `tutorial`
-  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,3 +1,9 @@
+<?php
+
+include('config.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +15,11 @@
 <body>
     <div class="navbar">
         <img src="../images/mainlogo.png" style="width: 7%;" alt="">
-          <a href="homepage.html">Home</a>
+          <a href="homepage.php">Home</a>
           <a href="news.html">News</a>
-          <a href="jobs.html">Jobs</a>
-          <a href="jobseekers.html">Job Sekkers</a>
-          <a href="company.html">Company's</a>
+          <a href="jobs.php">Jobs</a>
+          <a href="jobseekers.php">Job Sekkers</a>
+          <a href="company.php">Company's</a>
 
           <img src="../images/company1.png" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%" > 
         
@@ -25,7 +31,7 @@
                     <h2>Admin</h2>
                  </div>
                  <hr>
-                 <a href="profile.html" class="sub-menu-link">
+                 <a href="profile.php" class="sub-menu-link">
                   <img src="../images/logout.png" alt="">
                   <p style="color: white;">Company Profile</p>
                   <span> > </span>
@@ -36,7 +42,7 @@
                 <span> > </span>
               </a>
                 
-               <a href="#" class="sub-menu-link">
+               <a href="logout.php" class="sub-menu-link">
                 <img src="../images/logout.png" alt="">
                 <p style="color: white;">Log Out</p>
                 <span> > </span>

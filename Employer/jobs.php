@@ -1,3 +1,14 @@
+<?php
+
+include('config.php');
+session_start();
+
+$sql= "SELECT * FROM job";
+$result= mysqli_query($conn,$sql);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +20,11 @@
 <body>
     <div class="navbar">
         <img src="../images/mainlogo.png" style="width: 7%;" alt="">
-          <a href="homepage.html">Home</a>
+          <a href="homepage.php">Home</a>
           <a href="news.html">News</a>
-          <a href="jobs.html">Jobs</a>
-          <a href="jobseekers.html">Job Sekkers</a>
-          <a href="company.html">Company's</a>
+          <a href="jobs.php">Jobs</a>
+          <a href="jobseekers.php">Job Sekkers</a>
+          <a href="company.php">Company's</a>
 
           <img src="../images/company1.png" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%" > 
         
@@ -25,7 +36,7 @@
                     <h2>Admin</h2>
                  </div>
                  <hr>
-                 <a href="profile.html" class="sub-menu-link">
+                 <a href="profile.php" class="sub-menu-link">
                   <img src="../images/logout.png" alt="">
                   <p style="color: white;">Company Profile</p>
                   <span> > </span>
@@ -36,7 +47,7 @@
                 <span> > </span>
               </a>
                 
-               <a href="#" class="sub-menu-link">
+               <a href="logout.php" class="sub-menu-link">
                 <img src="../images/logout.png" alt="">
                 <p style="color: white;">Log Out</p>
                 <span> > </span>
@@ -69,70 +80,45 @@
 
         <div class="jobcontainer">
 
+        <?php
+
+        if(mysqli_num_rows($result)>0){
+
+    
+
+        while($row=mysqli_fetch_assoc($result))
+        {
+          $id = $row['id'];
+          $j_title = $row['j_title'];
+          $j_type = $row['j_type'];
+          $j_description = $row['j_description'];
+
+      
+        ?>
+
               <div class="job">
 
                   <div class="logo">
                       <img src="../images/html.png" alt="">
                   </div>
                   <div class="logo l1">
-                   <h2>Front-End Developer With 1/2 years Experience</h2>
+                   <h2><?php echo $j_title?></h2>
                  </div >
                  <div class="logo l2">
-                      <p>Date: 25 Oct 2023</p>
-                      <p style="text-align:justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus amet optio, facere vero fugit sed voluptates unde sequi eveniet nesciunt!</p>
-                      <p>Status : Available</p>
+                      <p style="text-align:justify"><?php echo $j_description?></p>
                       <a href="" style="margin-left: 5%;">Read More</a>
                  </div>
 
               </div>
-              <div class="job">
 
-                <div class="logo">
-                    <img src="../images/html.png" alt="">
-                </div>
-                <div class="logo l1">
-                 <h2>Front-End Developer With 1/2 years Experience</h2>
-               </div >
-               <div class="logo l2">
-                    <p>Date: 25 Oct 2023</p>
-                    <p style="text-align:justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus amet optio, facere vero fugit sed voluptates unde sequi eveniet nesciunt!</p>
-                    <p>Status : Available</p>
-                    <a href="" style="margin-left: 5%;">Read More</a>
-               </div>
-
-            </div>
-            <div class="job">
-
-              <div class="logo">
-                  <img src="../images/html.png" alt="">
-              </div>
-              <div class="logo l1">
-               <h2>Front-End Developer With 1/2 years Experience</h2>
-             </div >
-             <div class="logo l2">
-                  <p>Date: 25 Oct 2023</p>
-                  <p style="text-align:justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus amet optio, facere vero fugit sed voluptates unde sequi eveniet nesciunt!</p>
-                  <p>Status : Available</p>
-                  <a href="" style="margin-left: 5%;">Read More</a>
-             </div>
-
-          </div>
-          <div class="job">
-
-            <div class="logo">
-                <img src="../images/html.png" alt="">
-            </div>
-            <div class="logo l1">
-             <h2>Front-End Developer With 1/2 years Experience</h2>
-           </div >
-           <div class="logo l2">
-                <p>Date: 25 Oct 2023</p>
-                <p style="text-align:justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus amet optio, facere vero fugit sed voluptates unde sequi eveniet nesciunt!</p>
-                <p>Status : Available</p>
-                <a href="" style="margin-left: 5%;">Read More</a>
-           </div>
-
-        </div>
+           <?php
+          }
+        }
+        else{
+          echo "No record found";
+        }
+        ?>   
+         
              
 
         </div>
