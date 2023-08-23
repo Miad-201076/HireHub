@@ -87,14 +87,13 @@ include('config.php');
 
       <img src="images/mainlogo.png" style="height: 30%; width: 30%" alt="">
       <h3>Company</h3>
-      <form action="#" method="post">
+      <form action="#" method="post" enctype="multipart/form-data">
         <label for="">Company Logo</label>
         <input type="file" name="profilepic" id="" class="cv" placeholder="Profile Picture" value="Profile picture" required>
         <label for="">Company Banner</label>
         <input type="file" name="banner" id="" class="cv" placeholder="Profile Picture" value="Profile picture" required>
         <input type="text" name="nameOfCompany" class="email" placeholder="Name Of the Company" required>
         <input type="email" name="email" class="email" placeholder="Email" required>
-        <input type="date" name="dob" class="email" placeholder="Date of Establishment" required>
         <input type="text" name="location" class="email" placeholder="location" required>
         <select name="category" id="" class="email" aria-placeholder="Category">
             <option value="IT">IT</option>
@@ -117,3 +116,66 @@ include('config.php');
   </div>
 </body>
 </html>
+<?php
+
+  if(isset($_POST['submit'])){
+    $filename= $_FILES['profilepic']['name'];
+    $tempname= $_FILES['profilepic']['tmp_name'];
+    $img_ex = pathinfo($filename, PATHINFO_EXTENSION);
+    $img_ex_lc = strtolower($img_ex);
+    $allowed_exs = array("jpg", "jpeg", "png"); 
+
+    if(in_array($img_ex_lc, $allowed_exs)){
+      $filename1= $_FILES['banner']['name'];
+      $tempname1= $_FILES['banner']['tmp_name'];
+      $img_ex1 = pathinfo($filename1, PATHINFO_EXTENSION);
+      $img_ex_lc1 = strtolower($img_ex1);
+      $allowed_exs1 = array("jpg", "jpeg", "png");
+      if(in_array($img_ex_lc1, $allowed_exs1)){
+
+        $nameoftheCompany = $_POST['nameOfCompany'];
+        $email = $_POST['email'];
+        $location = $_POST['location'];
+        $category = $_POST['category'];
+        $pass = $_POST['pass'];
+        $description = $_POST['description'];
+        $folder = "images/profile/".$filename;
+        $folder1 = "images/banner/".$filename1;
+        move_uploaded_file($tempname, $folder);
+        move_uploaded_file($tempname1, $folder1);
+        $type= "company";
+
+        $sql="SELECT * FROM user WHERE email='$email'";
+        $result=mysqli_query($conn,$sql);
+        $num= mysqli_num_rows($result);
+
+        if($num==0){
+          $sql1="INSERT INTO user (`name`, `email`, `address`, `company_type`,`password`, `description`, `profile_pic`, `cover_pic`,`approval`,`type`) VALUES ('$nameoftheCompany', '$email', '$location', '$category', '$pass', '$description', '$folder', '$folder1',0,'$type')";
+          $result1=mysqli_query($conn,$sql1);
+          if($result1){
+            echo "<script>alert('Company Account Created Successfully')</script>";
+          }
+          else{
+            echo "<script>alert('Company Account Creation Failed')</script>";
+          }
+
+        }
+        else{
+          echo "<script>alert('Account with this Email Already Exists')</script>";
+        }
+
+
+      
+
+      }
+      else{
+        echo "<script>alert('Please upload an image file only')</script>";
+      }
+    }
+    else{
+      echo "<script>alert('Please upload an image file only')</script>";
+    }
+
+  }
+
+?>

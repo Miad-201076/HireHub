@@ -107,7 +107,7 @@ $result_seeker = mysqli_query($conn, $sql);
                   <td><?php echo $name ?></td>
                   <td><?php echo $email ?></td>
                   <td><?php echo $address ?></td>
-                  <td><img src="../images/profile/<?php echo $logo?>" alt="" style="width: 80px; height:75px"></td>
+                  <td><img src="../<?php echo $logo?>" alt="" style="width: 80px; height:75px"></td>
                   <td><a href="approval.php? approve=<?php echo $id; ?>" class="approve">Approve</a></td>
                   <td><a href="approval.php? decline=<?php echo $id; ?>" class="decline">Decline</a></td>
                 </tr>
@@ -149,7 +149,7 @@ $result_seeker = mysqli_query($conn, $sql);
                   <td><?php echo $name ?></td>
                   <td><?php echo $email ?></td>
                   <td><?php echo $address ?></td>
-                  <td><img src="../images/profile/<?php echo $logo ?>" alt="" style="width: 80px; height:75px"></td>
+                  <td><img src="../<?php echo $logo ?>" alt="" style="width: 80px; height:75px"></td>
                   <td><a href="approval.php? approve=<?php echo $id; ?>" class="approve">Approve</a></td>
                   <td><a href="approval.php? decline=<?php echo $id; ?>" class="decline">Decline</a></td>
                 </tr>

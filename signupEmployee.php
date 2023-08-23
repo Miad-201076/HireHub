@@ -88,14 +88,13 @@ include('config.php');
 
       <img src="images/mainlogo.png" style="height: 30%; width: 30%" alt="">
       <h3>Employee</h3>
-      <form action="#" method="post">
+      <form action="#" method="post" enctype="multipart/form-data">
         <label for="">Profile Picture</label>
         <input type="file" name="profilepic" id="" class="cv" placeholder="Profile Picture" value="Profile picture" required>
         <label for="">Cover Picture</label>
         <input type="file" name="coverpic" id="" class="cv" placeholder="Profile Picture" value="Profile picture" required>
         <input type="text" name="name" class="email" placeholder="Name" required>
         <input type="email" name="email" class="email" placeholder="Email" required>
-        <input type="date" name="dob" class="email" placeholder="Date of Birth" required>
         <select name="education" id="" class="email" aria-placeholder="Educational Background">
             <option value="BSCSE">BSCSE</option>
             <option value="BSEEE">BSEEE</option>
@@ -134,3 +133,83 @@ include('config.php');
   </div>
 </body>
 </html>
+<?php
+
+  if(isset($_POST['submit'])){
+    $filename= $_FILES['profilepic']['name'];
+    $tempname= $_FILES['profilepic']['tmp_name'];
+    $img_ex = pathinfo($filename, PATHINFO_EXTENSION);
+    $img_ex_lc = strtolower($img_ex);
+    $allowed_exs = array("jpg", "jpeg", "png"); 
+
+    if(in_array($img_ex_lc, $allowed_exs)){
+      $filename1= $_FILES['coverpic']['name'];
+      $tempname1= $_FILES['coverpic']['tmp_name'];
+      $img_ex1 = pathinfo($filename1, PATHINFO_EXTENSION);
+      $img_ex_lc1 = strtolower($img_ex1);
+      $allowed_exs1 = array("jpg", "jpeg", "png");
+      if(in_array($img_ex_lc1, $allowed_exs1)){
+
+       
+
+        $filename2= $_FILES['cv']['name'];
+        $tempname2= $_FILES['cv']['tmp_name'];
+        $img_ex2 = pathinfo($filename2, PATHINFO_EXTENSION);
+        $img_ex_lc2 = strtolower($img_ex2);
+        $allowed_exs2 = array("pdf", "docx");
+        if(in_array($img_ex_lc2, $allowed_exs2)){
+          $name = $_POST['name'];
+          $email = $_POST['email'];
+          $education = $_POST['education'];
+          $institute = $_POST['institute'];
+          $CGPA = $_POST['CGPA'];
+          $location = $_POST['location'];
+          $pass = $_POST['pass'];
+          $description = $_POST['description'];
+          $folder = "images/profile/".$filename;
+          $folder1 = "images/banner/".$filename1;
+          move_uploaded_file($tempname, $folder);
+          move_uploaded_file($tempname1, $folder1);
+          $type= "seeker";
+          $folder2 = "images/cv/".$filename2;
+          move_uploaded_file($tempname2, $folder2);
+          $sql="SELECT * FROM user WHERE email='$email'";
+          $result=mysqli_query($conn,$sql);
+          $num= mysqli_num_rows($result);
+  
+          if($num==0){
+            $sql1= "INSERT INTO user (`name`, `email`, `education_background`, `university`, `cgpa`, `password`, `description`, `profile_pic`, `cover_pic`,`approval`,`type`,`cv`) VALUES ('$name', '$email', '$education', '$institute', '$CGPA', '$pass', '$description', '$folder', '$folder1',0,'$type','$folder2')";
+            $result1=mysqli_query($conn,$sql1);
+            if($result1){
+              echo "<script>alert('User  Account Created Successfully')</script>";
+            }
+            else{
+              echo "<script>alert('User  Account Creation Failed')</script>";
+            }
+  
+          }
+          else{
+            echo "<script>alert('Account with this Email Already Exists')</script>";
+          }
+        }
+        else{
+          echo "<script>alert('Please upload an pdf file only')</script>";
+        }
+
+       
+
+
+      
+
+      }
+      else{
+        echo "<script>alert('Please upload an image file only')</script>";
+      }
+    }
+    else{
+      echo "<script>alert('Please upload an image file only')</script>";
+    }
+
+  }
+
+?>
