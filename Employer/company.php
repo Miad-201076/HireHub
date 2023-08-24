@@ -2,6 +2,9 @@
 
 include('config.php');
 session_start();
+$pro_pic= $_SESSION['profile_pic'];
+$cover_pic= $_SESSION['cover_pic'];
+
 
 $sql= "SELECT * FROM user WHERE `type` = 'company' and `approval` = 1";
 $result = mysqli_query($conn, $sql);
@@ -28,13 +31,13 @@ $result = mysqli_query($conn, $sql);
           <a href="jobseekers.php">Job Sekkers</a>
           <a href="company.php">Company's</a>
 
-          <img src="../images/company1.png" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%" > 
+          <img src="../<?php echo $pro_pic ?>"  onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%; border-radius: 50%;" > 
         
           <div class="sub-menu-wrap" id="subMenu">
 
             <div class="sub-menu">
                  <div class="user-info">
-                    <img src="../images/company1.png"  alt="">
+                 <img src="../<?php echo $pro_pic ?>"  alt="">
                     <h2><?php echo $_SESSION['name'] ?></h2>
                  </div>
                  <hr>

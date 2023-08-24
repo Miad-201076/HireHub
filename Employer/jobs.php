@@ -5,6 +5,9 @@ session_start();
 
 $sql= "SELECT * FROM job";
 $result= mysqli_query($conn,$sql);
+$pro_pic= $_SESSION['profile_pic'];
+$cover_pic= $_SESSION['cover_pic'];
+
 
 
 ?>
@@ -26,13 +29,13 @@ $result= mysqli_query($conn,$sql);
           <a href="jobseekers.php">Job Sekkers</a>
           <a href="company.php">Company's</a>
 
-          <img src="../images/company1.png" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%" > 
+          <img src="../<?php echo $pro_pic ?>"  onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25% ; border-radius: 50%;" > 
         
           <div class="sub-menu-wrap" id="subMenu">
 
             <div class="sub-menu">
                  <div class="user-info">
-                    <img src="../images/company1.png"  alt="">
+                 <img src="../<?php echo $pro_pic ?>"  alt="">
                     <h2><?php echo $_SESSION['name'] ?></h2>
                  </div>
                  <hr>
@@ -97,6 +100,12 @@ $result= mysqli_query($conn,$sql);
           $j_title = $row['j_title'];
           $j_type = $row['j_type'];
           $j_description = $row['j_description'];
+          $e_id= $row['e_id'];
+
+          $sql1= "SELECT * FROM user WHERE id = '$e_id'";
+          $result1= mysqli_query($conn,$sql1);
+          $row1=mysqli_fetch_assoc($result1);
+          $profile_pic= $row1['profile_pic'];
 
       
         ?>
@@ -104,14 +113,14 @@ $result= mysqli_query($conn,$sql);
               <div class="job">
 
                   <div class="logo">
-                      <img src="../images/html.png" alt="">
+                      <img src="../<?php echo $profile_pic?>" alt="">
                   </div>
                   <div class="logo l1">
                    <h2><?php echo $j_title?></h2>
                  </div >
                  <div class="logo l2">
                       <p style="text-align:justify"><?php echo $j_description?></p>
-                      <a href="" style="margin-left: 5%;">Read More</a>
+                   
                  </div>
 
               </div>

@@ -24,7 +24,7 @@ $cover_pic= $_SESSION['cover_pic'];
           <a href="jobseekers.php">Job Sekkers</a>
           <a href="company.php">Company's</a>
 
-          <img src="../images/company1.png" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%" > 
+          <img src="../<?php echo $pro_pic ?>"  onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%; border-radius: 50%;" > 
         
           <div class="sub-menu-wrap" id="subMenu">
 
@@ -65,15 +65,20 @@ $cover_pic= $_SESSION['cover_pic'];
         <div class="profile">
             <div class="profile_img">
                 <img src="../<?php echo $cover_pic ?>"  alt="" style="width:100%; height:500px; border-radius:20px">
-               >
-                <img src="../<?php echo $pro_pic ?>" alt="" style="width: 14%; margin-top:-8%; border-radius: 50%">
+                <img src="../<?php echo $pro_pic ?>" alt="" style="width: 14%; margin-top:-8%; border-radius: 50%;margin-left:3%">
             </div>
             <div class="profile_info">
-                <h2><?php echo $_SESSION['name']  ?></h2>
-                <h3><?php  echo  $_SESSION['type']  ?></h3>
-                <h3><?php  echo   $_SESSION['address']  ?></h3>
+               <div class="content">
+
+               <h2><?php echo $_SESSION['name']  ?></h2>
+               
+                <h3><?php  echo  $_SESSION['company_type']  ?></h3>
                 <h3><?php  echo   $_SESSION['email']  ?></h3>
+                <h3><?php  echo   $_SESSION['address']  ?></h3>
+  
                 <p><?php  echo  $_SESSION['description']  ?></p>
+
+               </div>
             </div>
         </div>
        
@@ -90,3 +95,22 @@ $cover_pic= $_SESSION['cover_pic'];
       subMenu.classList.toggle("open");
     } 
   </script>
+
+<style>
+    .profile_info{
+    width: 100%;
+    background-color: #dddddd;
+    border-radius: 20px;
+    margin-left: 1%;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    shadow: 0 0 10px rgba(0,0,0,0.5);
+
+  }
+  .content{
+   width: 100%;
+   padding: 5px;
+   margin-left: 1%;
+  }
+  </style>

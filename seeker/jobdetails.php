@@ -16,6 +16,14 @@
     $j_description= $row['j_description'];
     $needed_skill= $row['needed_skill'];
 
+    $sql5= "SELECT * FROM user where id='$e_id'";
+    $result5= mysqli_query($conn,$sql5);
+    $row5= mysqli_fetch_assoc($result5);
+    $name= $row5['name'];
+    $address= $row5['address'];
+    $email= $row5['email'];
+    $profile_pic= $row5['profile_pic'];
+
 
 
     $id= $_SESSION['id'];
@@ -73,7 +81,6 @@
             $result1= mysqli_query($conn,$sql1);
             $num= mysqli_num_rows($result1);
             echo $num; 
-            echo $job_id." ".$e_id." ".$seeker." ".$needed_skill;
             if($num==0){
                 $sql2= "INSERT INTO applicant (`j_id`,`e_id`,`seeker_id`,`mojor_skill` ) VALUES ('$job_id','$e_id','$seeker','$needed_skill')";
                 $result2= mysqli_query($conn,$sql2);
@@ -103,7 +110,7 @@
           }
           else{
            echo "<script>alert('You are not eligible for this job')
-           window.location.href='jobs.php'</script>";
+           window.location.href='tutorial.php?tag=$needed_skill'</script>";
           }
       
 
@@ -130,7 +137,7 @@
           <a href="homepage.php">Home</a>
           <a href="news.html">News</a>
           <a href="jobs.php">Jobs</a>
-          <a href="jobseekers.php">Job Sekkers</a>
+          <a href="tutorial.php">Tutorial</a>
           <a href="company.php">Company's</a>
 
           <img src="../<?php echo $profile_pic  ?>" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%; border-radius:50%" > 
@@ -175,20 +182,18 @@
 
            <div class="left">
 
-            <img src="../images/avatar.png" alt="">
+            <img src="../<?php echo $profile_pic ?>" alt="">
 
            </div>
            <div class="left">
             <div class="content">
-                <h2>Job Title</h2>
-                <h3>Company Name</h3>
-                <h3>Location</h3>
-                <h3>Salary</h3>
-                <h3>Job Type</h3>
-                <h3>Job Category</h3>
-                <h3>Job Description</h3>
-                <h3>Job Requirements</h3>
-                <h3>Job Responsibilities</h3>
+                <h1 style="color:red;"><?php echo $j_title ?></h1>
+                <h2><?php echo $name ?></h2>
+                <h3>Location : <?php echo $address?></h3>
+                <h3>Job Type: <?php echo $j_type ?></h3>
+                <h3>Job Requirements: <?php echo $needed_skill?></h3>
+                <p><?php echo $j_description?></p>
+
 
             </div>
            

@@ -5,7 +5,7 @@ session_start();
 
 
 
-$sql1 = "SELECT * FROM user where type='employee' and approval=1";
+$sql1 = "SELECT * FROM user where type='seeker' and approval=1";
 $result = mysqli_query($conn, $sql1);
 $num1 = mysqli_num_rows($result);
 

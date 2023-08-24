@@ -2,6 +2,26 @@
 
 include('config.php');
 session_start();
+$pro_pic= $_SESSION['profile_pic'];
+$cover_pic= $_SESSION['cover_pic'];
+
+if(isset($_GET['approve'])){
+  $j_id= $_GET['approve'];
+  $app_id= $_GET['apli'];
+
+
+  $sql= "UPDATE applicant SET approval = 1  WHERE j_id = '$j_id' AND seeker_id = '$app_id' ";
+  $result = mysqli_query($conn,$sql);
+  if($result){
+    echo "<script>alert('Applicant Has been Approved For interview')</script>";
+   
+  }
+  else{
+    echo "<script>alert('Applicant Has been Rejected')</script>";
+   
+  }
+}
+
 
 ?>
 
@@ -24,13 +44,13 @@ session_start();
       <a href="jobseekers.php">Job Sekkers</a>
       <a href="company.php">Company's</a>
 
-      <img src="../images/company1.png" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%" > 
+      <img src="../<?php echo $pro_pic ?>"  onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%; border-radius: 50%;" > 
     
       <div class="sub-menu-wrap" id="subMenu">
 
         <div class="sub-menu">
              <div class="user-info">
-                <img src="../images/company1.png"  alt="">
+             <img src="../<?php echo $pro_pic ?>"  alt="">
                 <h2><?php echo $_SESSION['name'] ?></h2>
              </div>
              <hr>
@@ -131,7 +151,7 @@ session_start();
             <tr>
             <?php
             $id= $_SESSION['id'];
-            $sql= "SELECT * FROM applicant where e_id = '$id' ";
+            $sql= "SELECT * FROM applicant where e_id = '$id'  AND approval = 0";
            $result_job = mysqli_query($conn,$sql);
            
 
@@ -160,10 +180,68 @@ session_start();
               <td><?php echo $title ?></td>
               <td><?php echo $name  ?></td>
               <td><?php echo $skill?></td>
-              <td><a href=""class="approve">View </a></td>
+              <td><a href="viewapplicant.php?app=<?php echo $emp_id?>"class="approve">View </a></td>
               <td><a href="../<?php echo $cv ?>"class="approve">Download</a></td>
-              <td><a href="approval.php? approve=<?php echo $id; ?>" class="approve">Approve</a></td>
-              <td><a href="approval.php? approve=<?php echo $id; ?>" class="decline">Reject</a></td>
+ 
+              <td><a href="postedjob.php?approve=<?php echo $id; ?>&apli=<?php echo $emp_id;?>"class="approve">Approve</a></td>
+              <td><a href="postedjob.php? approve=<?php echo $id; ?>" class="decline">Reject</a></td>
+              </tr>
+          <?php
+            }
+          ?>
+           
+          
+          </tbody>
+
+      </table>
+      <table class="content-table">
+        <h1 style="text-align: center; margin-top:5%">Selected Applicants For interview</h1>
+        <thead>
+        
+          <tr>
+            <th>Job ID</th>
+            <th>Job Title</th>
+            <th>Applicant Name</th>
+            <th>Major Skill Needed</th>
+            <th>Pofile</th>
+            <th> CV</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <?php
+            $id= $_SESSION['id'];
+            $sql= "SELECT * FROM applicant where e_id = '$id'  AND approval = 1";
+           $result_job = mysqli_query($conn,$sql);
+           
+
+            while($row=mysqli_fetch_assoc($result_job))
+            {
+              $id = $row['j_id'];
+              $emp_id= $row['seeker_id'];
+              $sql2= "SELECT * FROM job where j_id = '$id' ";
+              $result_job2 = mysqli_query($conn,$sql2);
+              $row2=mysqli_fetch_assoc($result_job2);
+              $title = $row2['j_title'];
+              $skill= $row2['needed_skill'];
+  
+              $skill = $row2['needed_skill'];
+              $sql3= "SELECT * FROM user where id = '$emp_id' ";
+              $result_job3 = mysqli_query($conn,$sql3);
+              $row3=mysqli_fetch_assoc($result_job3);
+              $name = $row3['name'];
+              $cv= $row3['cv'];
+             
+        
+            ?>
+             
+                    
+              <td><?php echo $id ?></td>
+              <td><?php echo $title ?></td>
+              <td><?php echo $name  ?></td>
+              <td><?php echo $skill?></td>
+              <td><a href="viewapplicant.php?app=<?php echo $emp_id?>"class="approve">View </a></td>
+              <td><a href="../<?php echo $cv ?>"class="approve">Download</a></td>
               </tr>
           <?php
             }

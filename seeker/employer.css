@@ -19,13 +19,33 @@
     margin-left: 5%;
   }
   .profile_info{
-    
+    width: 100%;
+    background-color: #000000;
     margin-left: 1%;
     color: #000000;
     font-size: 20px;
     font-weight: 500;
 
   }
+  
+.approve{
+  background-color: #1597e7; 
+  color: rgb(245, 241, 241); 
+  border: 1px solid #1597e7;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.approve:hover {
+  background-color: #ffffff;
+  color: rgb(7, 7, 7);
+}
 
     body{
         width: 80%;

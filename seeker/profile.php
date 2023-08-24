@@ -33,7 +33,7 @@ $name= $_SESSION['name'];
 
             <div class="sub-menu">
                  <div class="user-info">
-                    <img src="../<?php echo $profile_pic  ?>"  alt="">
+                    <img src="../<?php echo $pro_pic  ?>"  alt="">
                     <h2><?php echo $name ?></h2>
                  </div>
                  <hr>
@@ -67,16 +67,33 @@ $name= $_SESSION['name'];
         <div class="profile">
             <div class="profile_img">
                 <img src="../<?php echo $cover_pic ?>"  alt="" style="width:100%; height:500px; border-radius:20px">
-               >
-                <img src="../<?php echo $pro_pic ?>" alt="" style="width: 14%; margin-top:-8%; border-radius: 50%">
+                <img src="../<?php echo $pro_pic ?>" alt="" style="width: 14%; margin-top:-8%; border-radius: 50%;margin-left:3%">
             </div>
             <div class="profile_info">
-                <h2><?php echo $_SESSION['name']  ?></h2>
-                <h3><?php  echo  $_SESSION['type']  ?></h3>
-                <h3><?php  echo   $_SESSION['address']  ?></h3>
-                <h3><?php  echo   $_SESSION['email']  ?></h3>
-                <p><?php  echo  $_SESSION['description']  ?></p>
+              <div class="content">
+               <h2><?php echo $_SESSION['name']  ?></h2>
+               <h5><?php  echo   $_SESSION['email']  ?></h5>
+               <p>Address: <?php  echo   $_SESSION['address']  ?></p>
+               <p>University: <?php  echo   $_SESSION['university']  ?></p>
+               <p>CGPA: <?php  echo   $_SESSION['cgpa']  ?></p>
+               <p><?php  echo  $_SESSION['description']  ?></p>
+               <h4>Skills: 
+                
+               <?php  
+               
+                $sql = "SELECT * FROM skills WHERE e_id = '".$_SESSION['id']."' ";
+                $result = mysqli_query($conn, $sql);
+                while($row = mysqli_fetch_assoc($result)){
+                  $skill = $row['skill_name'];
+                  echo $skill.", ";
+             }
+               
+               ?>
+              
+              
+              </h4>
                 <a href="../images/cv/abu.pdf" class="approve">Download CV</a>
+              </div>
             </div>
         </div>
        
@@ -93,3 +110,22 @@ $name= $_SESSION['name'];
       subMenu.classList.toggle("open");
     } 
   </script>
+
+  <style>
+    .profile_info{
+    width: 100%;
+    background-color: #dddddd;
+    border-radius: 20px;
+    margin-left: 1%;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    shadow: 0 0 10px rgba(0,0,0,0.5);
+
+  }
+  .content{
+   width: 100%;
+   padding: 5px;
+   margin-left: 1%;
+  }
+  </style>

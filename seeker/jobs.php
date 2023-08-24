@@ -8,6 +8,7 @@ $result= mysqli_query($conn,$sql);
 $profile_pic= $_SESSION['profile_pic'];
 $name=$_SESSION['name'];
 
+
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@ $name=$_SESSION['name'];
           <a href="homepage.php">Home</a>
           <a href="news.html">News</a>
           <a href="jobs.php">Jobs</a>
-          <a href="jobseekers.php">Job Sekkers</a>
+          <a href="tutorial.php">Tutorial</a>
           <a href="company.php">Company's</a>
 
           <img src="../<?php echo $profile_pic  ?>" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%; border-radius:50%" > 
@@ -98,6 +99,12 @@ $name=$_SESSION['name'];
           $j_title = $row['j_title'];
           $j_type = $row['j_type'];
           $j_description = $row['j_description'];
+          $e_id= $row['e_id'];
+
+          $sql1= "SELECT * FROM user WHERE id = '$e_id'";
+          $result1= mysqli_query($conn,$sql1);
+          $row1=mysqli_fetch_assoc($result1);
+          $profile_pic= $row1['profile_pic'];
 
       
         ?>
@@ -105,7 +112,7 @@ $name=$_SESSION['name'];
               <div class="job">
 
                   <div class="logo">
-                      <img src="../images/html.png" alt="">
+                      <img src="../<?php echo $profile_pic?>" alt="">
                   </div>
                   <div class="logo l1">
                    <h2><?php echo $j_title?></h2>
