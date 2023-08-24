@@ -78,7 +78,9 @@ session_start();
           <tr>
             <?php
            
-           $sql= "SELECT * FROM job";
+           $id= $_SESSION['id'];
+           
+           $sql= "SELECT * FROM job where e_id = '$id'";
            $result_job = mysqli_query($conn,$sql);
            
 
@@ -117,8 +119,10 @@ session_start();
             <th>Job ID</th>
             <th>Job Title</th>
             <th>Applicant Name</th>
-            <th>Major Skill Obtained?</th>
-            <th>Needed Skill (Major One)</th>
+            <th>Major Skill Needed</th>
+            <th>Pofile</th>
+            <th> CV</th>
+
             <th>Approval</th>
             <th>Reject</th>
           </tr>
@@ -140,30 +144,24 @@ session_start();
               $row2=mysqli_fetch_assoc($result_job2);
               $title = $row2['j_title'];
               $skill= $row2['needed_skill'];
-              $sill= $row['skill'];
-              if( $sill==1){
-                $sill="Yes";
-
-              }
-              else{
-                $sill="No";
-              }
   
               $skill = $row2['needed_skill'];
               $sql3= "SELECT * FROM user where id = '$emp_id' ";
               $result_job3 = mysqli_query($conn,$sql3);
               $row3=mysqli_fetch_assoc($result_job3);
               $name = $row3['name'];
+              $cv= $row3['cv'];
+             
         
             ?>
              
-
-          
+                    
               <td><?php echo $id ?></td>
               <td><?php echo $title ?></td>
               <td><?php echo $name  ?></td>
-              <td><?php echo $sill ?></td>
               <td><?php echo $skill?></td>
+              <td><a href=""class="approve">View </a></td>
+              <td><a href="../<?php echo $cv ?>"class="approve">Download</a></td>
               <td><a href="approval.php? approve=<?php echo $id; ?>" class="approve">Approve</a></td>
               <td><a href="approval.php? approve=<?php echo $id; ?>" class="decline">Reject</a></td>
               </tr>

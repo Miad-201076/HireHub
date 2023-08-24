@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+</head>
+<body>
+    <div class="navbar">
+        <img src="../images/mainlogo.png" style="width: 7%;" alt="">
+          <a href="homepage.php">Home</a>
+          <a href="news.html">News</a>
+          <a href="jobs.php">Jobs</a>
+          <a href="jobseekers.php">Job Sekkers</a>
+          <a href="company.php">Company's</a>
+
+          <img src="../<?php echo $profile_pic  ?>" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%; border-radius:50%" > 
+        
+          <div class="sub-menu-wrap" id="subMenu">
+
+            <div class="sub-menu">
+                 <div class="user-info">
+                    <img src="../<?php echo $profile_pic  ?>"  alt="">
+                    <h2><?php echo $name ?></h2>
+                 </div>
+                 <hr>
+                 <a href="profile.php" class="sub-menu-link">
+                  <img src="../images/logout.png" alt="">
+                  <p style="color: white;"> Profile</p>
+                  <span> > </span>
+               </a>
+               <a href="addskills.php" class="sub-menu-link">
+                <img src="../images/logout.png" alt="">
+                <p style="color: white;">Add Skills </p>
+                <span> > </span>
+              </a>
+               <a href="applied.php" class="sub-menu-link">
+                <img src="../images/logout.png" alt="">
+                <p style="color: white;">Applied Jobs</p>
+                <span> > </span>
+              </a>
+                
+               <a href="logout.php" class="sub-menu-link">
+                <img src="../images/logout.png" alt="">
+                <p style="color: white;">Log Out</p>
+                <span> > </span>
+             </a>
+            </div>
+
+          </div>
+
+      </div>
+
+    <nav>
+        <div class="main-nav container flex">
+            <div class="search-bar">
+                <input id="search-text" type="text" class="news-input" placeholder="e.g. Science">
+                <button id="search-button" class="search-button">Search</button>
+            </div>
+        </div>
+    </nav>
+    
+
+    <main>
+        <div class="cards-container container flex" id="cards-container">
+            
+        </div>
+    </main>
+
+    <template id="template-news-card">
+        <div class="card">
+            <div class="card-header">
+                <img src="https://via.placeholder.com/400x200" alt="news-image" id="news-img">
+            </div>
+            <div class="card-content">
+                <h3 id="news-title">This is the Title</h3>
+                <h6 class="news-source" id="news-source">End Gadget 26/08/2023</h6>
+                <p class="news-desc" id="news-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae saepe quis voluptatum quisquam vitae doloremque facilis molestias quae ratione cumque!</p>
+            </div>
+        </div>
+    </template>
+
+    <div class="footer">
+        <img src="../images/mainlogo.png" style="width: 110px;" alt="">
+        <p style="color: black;">We are here to conncet you for better outcome</p>
+        <div class="icon">
+            <img src="../images/fb.png" style="width: 50px; height:50px" alt="">
+            &nbsp;  &nbsp;  &nbsp;
+            <img src="../images/tw.png" style="width: 50px; height:50px" alt="">
+            &nbsp;  &nbsp;  &nbsp;
+            <img src="../images/gmail.png" style="width: 50px; height:50px" alt="">
+  
+        </div>
+       </div>  
+
+
+</body>
+</html> 
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@500&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-text-color: #080808;
+    --secondary-text-color: #0d3553;
+    --accent-color: #2294ed;
+    --accent-color-dark: #1d69a3;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: var(--primary-text-color);
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+    color: var(--secondary-text-color);
+    line-height: 1.4rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    max-width: 1180px;
+    margin-inline: auto;
+    overflow: hidden;
+}
+
+
+
+.main-nav {
+    justify-content: space-between;
+    padding-block: 8px;
+}
+
+.company-logo img {
+    width: 120px;
+}
+
+.nav-links ul {
+    gap: 16px;
+}
+
+.hover-link {
+    cursor: pointer;
+}
+
+.hover-link:hover {
+    color: var(--secondary-text-color);
+}
+
+.hover-link:active {
+    color: red;
+}
+
+.nav-item.active {
+    color: var(--accent-color);
+}
+
+.search-bar {
+    margin-left: 30%;
+    width: 70%;
+    height: 32px;
+    margin-top: 5%;
+
+}
+.search-bar input{
+    width: 50%;
+}
+
+.news-input {
+    width: 200px;
+    height: 100%;
+    padding-inline: 12px;
+    border-radius: 4px;
+    border: 2px solid #bbd0e2;
+    font-family: "Roboto", sans-serif;
+}
+
+.search-button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 8px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+}
+
+.search-button:hover {
+    background-color: var(--accent-color-dark);
+}
+
+main {
+    padding-block: 20px;
+    margin-top: 20px;
+}
+
+.cards-container {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    align-items: start;
+}
+
+.card {
+    width: 360px;
+    min-height: 400px;
+    box-shadow: 0 0 4px #d4ecff;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #fff;
+    overflow: hidden;
+    color: #183b56;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 1px 1px 8px #d4ecff;
+    background-color: #f9fdff;
+    transform: translateY(-2px);
+}
+
+.card-header img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 12px;
+}
+
+.news-source {
+    margin-block: 12px;
+}
+</style>
+
+<script>
+
+    const API_KEY = "eedcb6a53866404993b44b4ecc453adb";
+    const url = "https://newsapi.org/v2/everything?q=";
+    
+    window.addEventListener("load", () => fetchNews("Bangladesh"));
+    
+    function reload() {
+        window.location.reload();
+    }
+    
+    async function fetchNews(query) {
+        const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
+        const data = await res.json();
+        bindData(data.articles);
+    }
+    
+    function bindData(articles) {
+        const cardsContainer = document.getElementById("cards-container");
+        const newsCardTemplate = document.getElementById("template-news-card");
+    
+        cardsContainer.innerHTML = "";
+    
+        articles.forEach((article) => {
+            if (!article.urlToImage) return;
+            const cardClone = newsCardTemplate.content.cloneNode(true);
+            fillDataInCard(cardClone, article);
+            cardsContainer.appendChild(cardClone);
+        });
+    }
+    
+    function fillDataInCard(cardClone, article) {
+        const newsImg = cardClone.querySelector("#news-img");
+        const newsTitle = cardClone.querySelector("#news-title");
+        const newsSource = cardClone.querySelector("#news-source");
+        const newsDesc = cardClone.querySelector("#news-desc");
+    
+        newsImg.src = article.urlToImage;
+        newsTitle.innerHTML = article.title;
+        newsDesc.innerHTML = article.description;
+    
+        const date = new Date(article.publishedAt).toLocaleString("en-US", {
+            timeZone: "Asia/Jakarta",
+        });
+    
+        newsSource.innerHTML = `${article.source.name} · ${date}`;
+    
+        cardClone.firstElementChild.addEventListener("click", () => {
+            window.open(article.url, "_blank");
+        });
+    }
+    
+    let curSelectedNav = null;
+    function onNavItemClick(id) {
+        fetchNews(id);
+        const navItem = document.getElementById(id);
+        curSelectedNav?.classList.remove("active");
+        curSelectedNav = navItem;
+        curSelectedNav.classList.add("active");
+    }
+    
+    const searchButton = document.getElementById("search-button");
+    const searchText = document.getElementById("search-text");
+    
+    searchButton.addEventListener("click", () => {
+        const query = searchText.value;
+        if (!query) return;
+        fetchNews(query);
+        curSelectedNav?.classList.remove("active");
+        curSelectedNav = null;
+    });
+
+  let subMenu= document.getElementById("subMenu");
+  function toggleMenu(){
+    subMenu.classList.toggle("open");
+  } 
+
+</script>
+
+<style>
+    body{
+        width: 80%;
+        margin-left: 10%;
+        color: black;
+       
+    }
+
+   
+    .navbar {     
+        width: 100%;
+        height: 5%;
+        top: 0;
+        display: flex;
+    }
+    .navbar a{
+        font-family: 'Poppings',sans-serif;
+        position: relative;
+        text-decoration: none;
+        letter-spacing: 0.5px;
+        padding-left: 2%;
+        margin-top: 2.5%;
+        margin-left: 2%;
+        cursor: pointer;
+        color:black ;
+    }
+   .navbar a:after{
+        content: "";
+        position: absolute;
+        background-color: rgb(20, 115, 238);
+        height: 5px;
+        left: 12px;
+        width: 0;
+        bottom: 25px;
+        transition: 0.3s;
+    }
+    .navbar a:hover{
+        color:rgb(20, 115, 238); 
+    }
+    .navbar a:hover:after{
+        width: 100%;
+    
+   
+
+    }
+
+    .sub-menu-wrap{
+        position: absolute;
+        top: 8%;
+        right: 11%;
+        width: 320px;
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height 0.5s;
+        border-radius: 40px;
+      }
+      .sub-menu-wrap.open{
+        max-height: 400px;
+      }
+      .sub-menu{
+        background-color: #000000;
+        padding: 20px;
+        margin: 10px;
+        color: azure;
+      }
+      .user-info{
+        display: flex;
+        align-items: center;
+      }
+      .user-info h3{
+          font-weight: 500;
+      }
+      .user-info img{
+        width: 50px;
+        border-radius: 50%;
+       margin-right: 15px;
+      }
+      .sub-menu hr{
+        border: 0;
+        height: 1px;
+        width: 100%;
+        background: #ccc;
+        margin: 15px 0 10px ;
+      }
+      .sub-menu-link{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #ffffff;
+        margin: 12px 0;
+      }
+    
+    
+      .sub-menu-link p{
+        width: 100%;
+    
+      }
+      .sub-menu-link img{
+        width: 30px;
+        background: #ffffff;
+        border-radius: 50%;
+        padding: 8px;
+        margin-right: 15px;
+    
+      }  
+      .sub-menu-link span{
+        font-size: 22px;
+        transition: transform 0.5s;
+    
+      }
+      
+      .sub-menu-link:hover span{
+        transform: translate(5px);
+    
+      }
+      .sub-menu-link:hover p{
+    
+        font-weight: 600;
+    
+      }
+      .sub-menu a{
+        font-family: 'Poppings',sans-serif;
+        cursor: pointer;
+        color:white ;
+      }
+    
+    .sub-menu a:hover{
+        color:rgb(255, 255, 255); 
+      }
+    .sub-menu a:hover:after{
+        width: 0%;
+
+    }
+    .icon{
+        display: flex;
+        margin-left: 24%;
+        margin-top: 20px;
+  
+    }
+    .footer{
+       margin-top: 5%;
+       background-color: #e9e1e1;
+        width: 100%;
+        display: flex;
+        border-radius: 10px;
+        color: #000000;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  
+    }
+    .footer p{
+        text-align: center;
+        margin-left: 30%;
+        margin-top: 3%;
+        font-size:18px;
+    }
+
+</style>

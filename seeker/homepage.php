@@ -3,6 +3,8 @@
 include('config.php');
 session_start();
 $name=$_SESSION['name'];
+$profile_pic= $_SESSION['profile_pic'];
+
 
 ?>
 
@@ -23,29 +25,29 @@ $name=$_SESSION['name'];
           <a href="jobseekers.php">Job Sekkers</a>
           <a href="company.php">Company's</a>
 
-          <img src="../images/company1.png" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%" > 
+          <img src="../<?php echo $profile_pic  ?>" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%; border-radius:50%" > 
         
           <div class="sub-menu-wrap" id="subMenu">
 
             <div class="sub-menu">
                  <div class="user-info">
-                    <img src="../images/company1.png"  alt="">
+                    <img src="../<?php echo $profile_pic  ?>"  alt="">
                     <h2><?php echo $name ?></h2>
                  </div>
                  <hr>
                  <a href="profile.php" class="sub-menu-link">
                   <img src="../images/logout.png" alt="">
-                  <p style="color: white;">Company Profile</p>
+                  <p style="color: white;"> Profile</p>
                   <span> > </span>
                </a>
-               <a href="jobpost.php" class="sub-menu-link">
+               <a href="addskills.php" class="sub-menu-link">
                 <img src="../images/logout.png" alt="">
-                <p style="color: white;">Post Jobs</p>
+                <p style="color: white;">Add Skills </p>
                 <span> > </span>
               </a>
-               <a href="postedjob.php" class="sub-menu-link">
+               <a href="applied.php" class="sub-menu-link">
                 <img src="../images/logout.png" alt="">
-                <p style="color: white;">Posted Jobs</p>
+                <p style="color: white;">Applied Jobs</p>
                 <span> > </span>
               </a>
                 
@@ -137,7 +139,6 @@ $name=$_SESSION['name'];
       <br>
       <br>
       <hr style="width: 80%;">
-      <!-- <a href="../images/cv/CPU Scheduling.pdf" download class="btn btn2">Download CV</a> -->
       
 
 

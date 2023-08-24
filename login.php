@@ -133,7 +133,7 @@ if(isset($_POST['submit']))
       header("Location:Employer/homepage.php");
     }
    else{
-    header("Location:seeker/seeker.php");
+    header("Location:seeker/homepage.php");
    }
     
   }
