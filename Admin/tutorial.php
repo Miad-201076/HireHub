@@ -90,6 +90,15 @@ if(isset($_POST['submit'])){
                     <option value="HTML">HTML</option>
                     <option value="CSS">CSS</option>
                     <option value="HTML">HTML</option>
+                    <option value="Business Analytics">Business Analytics</option>
+                    <option value="Project Management">Project Management</option>
+                    <option value="Digital Marketing">Digital Marketing</option>
+                    <option value="Content Writing">Content Writing</option>
+                    <option value="Graphic Design">Graphic Design</option>
+                    <option value="UI/UX Design">UI/UX Design</option>
+                    <option value="Video Editing">Video Editing</option>
+                    <option value="Animation">Animation</option>
+                <option value="LAw">Photography</option>
                 </select>
                 <label for="">Tutorial (Mp4 file)</label> &nbsp;&nbsp;&nbsp;
                 <input type="file" name="video" id="" class="cv" required>

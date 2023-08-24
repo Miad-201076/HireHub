@@ -86,7 +86,7 @@ session_start();
       </form>
 
       <p>Forgot Password? <a href="reset.html" style="color: rgb(105, 102, 102);">Reset</a> Now</p>
-      <p>Don't Have an Account? <a href="SignupSelect.html" style="color: #666262;"> Sign Up</a> Now</p>
+      <p>Don't Have an Account? <a href="SignupSelect.php" style="color: #666262;"> Sign Up</a> Now</p>
     
 
     </div>

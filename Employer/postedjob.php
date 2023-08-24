@@ -21,6 +21,19 @@ if(isset($_GET['approve'])){
    
   }
 }
+if(isset($_GET['dlt'])){
+  $id= $_GET['dlt'];
+  $sql="UPDATE job SET status = 0 WHERE j_id = '$id'";
+  $result = mysqli_query($conn,$sql);
+  if($result){
+    echo "<script>alert('Job Has been Closed')</script>";
+   
+  }
+  else{
+    echo "<script>alert('Job Has been Closed')</script>";
+   
+  }
+}
 
 
 ?>
@@ -41,7 +54,7 @@ if(isset($_GET['approve'])){
       <a href="homepage.php">Home</a>
       <a href="news.html">News</a>
       <a href="jobs.php">Jobs</a>
-      <a href="jobseekers.php">Job Sekkers</a>
+     
       <a href="company.php">Company's</a>
 
       <img src="../<?php echo $pro_pic ?>"  onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%; border-radius: 50%;" > 
@@ -91,7 +104,7 @@ if(isset($_GET['approve'])){
             <th>Job Type</th>
             <th>Job Description</th>
             <th>Needed Skill (Major One)</th>
-            <th>Remove</th>
+            <th>Close</th>
           </tr>
         </thead>
         <tbody>
@@ -120,7 +133,7 @@ if(isset($_GET['approve'])){
             <td><?php echo $type ?></td>
             <td><?php echo $description ?></td>
             <td><?php echo $skill ?></td>
-            <td><a href="approval.php? approve=<?php echo $id; ?>" class="decline">Remove</a></td>
+            <td><a href="postedjob.php? dlt=<?php echo $id; ?>" class="decline">Close</a></td>
           
           </tr>
           <?php

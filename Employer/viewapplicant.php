@@ -37,7 +37,7 @@ $cv= $row['cv'];
           <a href="homepage.php">Home</a>
           <a href="news.html">News</a>
           <a href="jobs.php">Jobs</a>
-          <a href="jobseekers.php">Job Sekkers</a>
+         
           <a href="company.php">Company's</a>
     
           <img src="../<?php echo $pro_pic ?>"  onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%; border-radius: 50%;" > 

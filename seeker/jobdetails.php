@@ -140,7 +140,7 @@
           <a href="tutorial.php">Tutorial</a>
           <a href="company.php">Company's</a>
 
-          <img src="../<?php echo $profile_pic  ?>" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%; border-radius:50%" > 
+          <img src="../<?php echo $_SESSION['profile_pic']  ?>" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%; border-radius:50%" > 
         
           <div class="sub-menu-wrap" id="subMenu">
 

@@ -87,14 +87,18 @@
         <div class="profile">
             <div class="profile_img">
                 <img src="../<?php echo $cover_pic?> " alt=""  style="width:100%; height:500px; border-radius:20px">
-                <img src="../<?php echo $pro?>" alt="" style="width: 12%; margin-top:-8%;margin-left:3%;  border: 2px solid #ffffff;  border-radius:50%;">
+                <img src="../<?php echo $pro?>" alt="" style="width: 12%; margin-top:-8%;margin-left:3%;border-radius:50%; border: 3px solid #000">
             </div>
             <div class="profile_info">
-                <h2><?php  echo  $name  ?></h2>
+              <div class="content">
+              <h2><?php  echo  $name  ?></h2>
                 <h3><?php  echo  $type  ?></h3>
                 <h3><?php  echo  $address  ?></h3>
                 <h3><?php  echo  $email  ?></h3>
                 <p><?php  echo  $description  ?></p>
+
+              </div>
+               
             </div>
         </div>
        
@@ -113,3 +117,24 @@
       subMenu.classList.toggle("open");
     } 
   </script>
+
+  
+<style>
+    .profile_info{
+    width: 100%;
+    height: 100%;
+    background-color: #dddddd;
+    border-radius: 20px;
+    margin-left: 1%;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    shadow: 0 0 10px rgba(0,0,0,0.5);
+
+  }
+  .content{
+   width: 100%;
+   padding: 5px;
+   margin-left: 1%;
+  }
+  </style>

@@ -21,7 +21,7 @@ $cover_pic= $_SESSION['cover_pic'];
           <a href="homepage.php">Home</a>
           <a href="news.html">News</a>
           <a href="jobs.php">Jobs</a>
-          <a href="jobseekers.php">Job Sekkers</a>
+         
           <a href="company.php">Company's</a>
 
           <img src="../<?php echo $pro_pic ?>"  onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%; border-radius: 50%;" > 
@@ -102,6 +102,15 @@ $cover_pic= $_SESSION['cover_pic'];
                 <option value="HTML">HTML</option>
                 <option value="CSS">CSS</option>
                 <option value="HTML">HTML</option>
+                <option value="Business Analytics">Business Analytics</option>
+                <option value="Project Management">Project Management</option>
+                <option value="Digital Marketing">Digital Marketing</option>
+                <option value="Content Writing">Content Writing</option>
+                <option value="Graphic Design">Graphic Design</option>
+                <option value="UI/UX Design">UI/UX Design</option>
+                <option value="Video Editing">Video Editing</option>
+                <option value="Animation">Animation</option>
+                <option value="LAw">Photography</option>
             </select>
             <br>
             <br>

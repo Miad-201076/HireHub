@@ -5,6 +5,7 @@ session_start();
 $pro_pic= $_SESSION['profile_pic'];
 $cover_pic= $_SESSION['cover_pic'];
 $name= $_SESSION['name'];
+$cv= $_SESSION['cv'];
 
 
 
@@ -24,7 +25,7 @@ $name= $_SESSION['name'];
           <a href="homepage.php">Home</a>
           <a href="news.html">News</a>
           <a href="jobs.php">Jobs</a>
-          <a href="jobseekers.php">Job Sekkers</a>
+          <a href="tutorial.php">Tutorial</a>
           <a href="company.php">Company's</a>
 
           <img src="../<?php echo $pro_pic  ?>" onclick="toggleMenu()" style="width: 50px; height:1%; margin-left:50%; margin-top:1.25%; border-radius:50%" > 
@@ -92,7 +93,7 @@ $name= $_SESSION['name'];
               
               
               </h4>
-                <a href="../images/cv/abu.pdf" class="approve">Download CV</a>
+                <a href="../<?php echo $cv?>" class="approve">Download CV</a>
               </div>
             </div>
         </div>

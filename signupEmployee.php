@@ -126,7 +126,7 @@ include('config.php');
       </form>
 
       <p>Forgot Password? <a href="reset.html" style="color: rgb(105, 102, 102);">Reset</a> Now</p>
-      <p>Already have  an Account? <a href="login.html" style="color: #666262;"> Sign in</a> Now</p>
+      <p>Already have  an Account? <a href="login.php" style="color: #666262;"> Sign in</a> Now</p>
     
 
     </div>

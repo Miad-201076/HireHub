@@ -99,7 +99,8 @@ include('config.php');
             <option value="IT">IT</option>
             <option value="Banking">Banking</option>
             <option value="Consultency">Consultency</option>
-            <option value="Educational Institute">Educational Institute</option>       
+            <option value="Educational Institute">Educational Institute</option>
+            <option value="Telecom">Telecom</option>         
         </select>
         <input type="password" name="pass" class="password" placeholder="Password" required>
 
@@ -109,7 +110,7 @@ include('config.php');
       </form>
 
       <p>Forgot Password? <a href="reset.html" style="color: rgb(105, 102, 102);">Reset</a> Now</p>
-      <p>Already Have an Account? <a href="login.html" style="color: #666262;"> Sign In</a> Now</p>
+      <p>Already Have an Account? <a href="login.php" style="color: #666262;"> Sign In</a> Now</p>
     
 
     </div>
@@ -153,7 +154,7 @@ include('config.php');
           $sql1="INSERT INTO user (`name`, `email`, `address`, `company_type`,`password`, `description`, `profile_pic`, `cover_pic`,`approval`,`type`) VALUES ('$nameoftheCompany', '$email', '$location', '$category', '$pass', '$description', '$folder', '$folder1',0,'$type')";
           $result1=mysqli_query($conn,$sql1);
           if($result1){
-            echo "<script>alert('Company Account Created Successfully')</script>";
+            echo "<script>alert('Company Account Created Successfully, Wait for the admin to approve your account!')</script>";
           }
           else{
             echo "<script>alert('Company Account Creation Failed')</script>";
