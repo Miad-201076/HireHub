@@ -11,10 +11,12 @@
     $tag= $_GET['tag'];
     $sql= "SELECT * FROM tutorial WHERE `t_type`='$tag'";
     $result_job = mysqli_query($conn,$sql);
+    $Suggested="Suggested Tutorial for ".$tag."";
   }
   else{
     $sql= "SELECT * FROM tutorial";
     $result_job = mysqli_query($conn,$sql);
+    $Suggested="Tutorials";
   }
  
 
@@ -75,7 +77,7 @@
       </div>
 
       <table class="content-table">
-        <h1 style="text-align: center; margin-top:5%">Applied Jobs</h1>
+        <h1 style="text-align: center; margin-top:5%"><?php echo $Suggested ?></h1>
         <thead>
         
           <tr>
