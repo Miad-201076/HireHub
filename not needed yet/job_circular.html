@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    ul.navbar {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    ul.navbar li {
+      display: inline-block;
+    }
+
+    ul.navbar li a {
+      display: block;
+      color: rgb(0, 0, 0);
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    ul.navbar li a:hover {
+      color: #064bb9;
+    }
+
+    ul.navbar li.logo {
+      float: left;
+    }
+
+    ul.navbar li.logo img {
+      display: block;
+      height: 50px;
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+
+    ul.navbar li.logo1 {
+      float: right;
+    }
+
+    ul.navbar li.logo1 img {
+      display: block;
+      height: 50px;
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f8f8f8;
+      }
+  
+      .form-container {
+        width: 700px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #f2f2f2;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+  
+      .form-container h2 {
+        margin: 0 0 10px;
+        background-color: #d79999;
+        color: #fff;
+        padding: 10px;
+        border-radius: 4px;
+        text-align: center;
+      }
+  
+      .form-group {
+        margin-bottom: 20px;
+      }
+  
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+      }
+  
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+  
+      .form-group textarea {
+        resize: vertical;
+      }
+  
+      .form-group::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+  
+      button[type="submit"] {
+        background-color: #1658a9;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+      }
+  
+      button[type="submit"]:hover {
+        background-color: #555;
+      }
+
+  </style>
+</head>
+<body>
+  <ul class="navbar">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Job Seekers</a></li>
+    <li><a href="#">Courses</a></li>
+    <li><a href="#">News</a></li>
+    <li class="logo"><img src="logo.png" alt="Logo"></li>
+    <li class="logo1"><img src="logo.png" alt="Logo"></li>
+  </ul>
+
+
+  <div class="form-container">
+    <h2>Job Details</h2>
+    <form method="post">
+      <div class="form-group">
+        <label for="job-title">Job Title</label>
+        <input type="text" id="job-title" name="job-title" placeholder="Enter job title">
+      </div>
+      <div class="form-group">
+        <label for="job-description">Job Description</label>
+        <textarea id="job-description" name="job-description" placeholder="Enter job description" rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="job-type">Type</label>
+        <select id="job-type" name="job-type">
+          <option value="full-time">Full-time</option>
+          <option value="part-time">Part-time</option>
+          <option value="contract">Contract</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="salary-range">Salary Estimation</label>
+        <div class="salary-range-container">
+          <input type="number" id="salary-range-low" name="salary-range-low" placeholder="Lower range">
+          <span>-</span>
+          <input type="number" id="salary-range-high" name="salary-range-high" placeholder="Higher range">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="requirements">Requirements</label>
+        <textarea id="requirements" name="requirements" placeholder="Enter job requirements" rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="educational-background">Educational Background</label>
+        <select id="educational-background" name="educational-background">
+          <option value="high-school">High School</option>
+          <option value="bachelors">Bachelor's Degree</option>
+          <option value="masters">Master's Degree</option>
+          <option value="phd">Ph.D.</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="contact-email">Contact Email</label>
+        <input type="email" id="contact-email" name="contact-email" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="contact-number">Contact Number</label>
+        <input type="tel" id="contact-number" name="contact-number" placeholder="Enter phone number">
+      </div>
+      <div class="form-group">
+        <label for="job-related-question">Job Related Question</label>
+        <textarea id="job-related-question" name="job-related-question" placeholder="Enter job related question" rows="4"></textarea>
+      </div>
+      <button type="submit">Post Job</button>
+    </form>
+  </div>
+ 
+</body>
+</html>

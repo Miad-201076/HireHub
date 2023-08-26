@@ -77,6 +77,7 @@
   }
   
 .content-table {
+
     margin-left: 15%;
     width: 70%;
     border-collapse: collapse;
@@ -176,6 +177,10 @@
         height: 5%;
         top: 0;
         display: flex;
+    }
+    .navbar img{
+      top: 0;
+ 
     }
     .navbar a{
         font-family: 'Poppings',sans-serif;
